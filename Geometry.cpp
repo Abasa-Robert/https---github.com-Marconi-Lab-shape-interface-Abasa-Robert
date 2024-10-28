@@ -7,10 +7,8 @@ using namespace std;
 class Shape{
 
         public:
-            virtual double area() const = 0;
-           virtual  double perimeter() const = 0;
-           virtual ~Shape()
-           { }
+            virtual double area()  = 0;
+           virtual  double perimeter()  = 0;
 };
 class Circle : public Shape{
     double radius;
@@ -19,14 +17,21 @@ class Circle : public Shape{
                     {
                         cout<<"enter the radius of the circle"<<endl;
                         cin>>r;
-                        radius = r;
+                        if(r<0)
+                            {
+                                cout<<"Wrong radius"<<endl;
+                            }
+                    else
+                        {
+                            radius = r;
+                        }
 
                     }
-                double area() const
+                double area() override 
                     {
                         return PI* pow(radius,2);
                        }
-                        double perimeter() const
+                        double perimeter() override 
                             {
                             return 2*PI*radius;
                             }   
@@ -40,18 +45,12 @@ class Rectangle : public Shape{
                     double width;
 
                 public:
-                Rectangle(double l, double w)
+                    Rectangle(double l, double w) : length(l), width(w) {}
+                    double area() override
                     {
-                        cout<<"enter the length and width of the rectangle"<<endl;
-                        cin>>l>>w;
-                        length = l;
-                        width = w;
-                    }
-               double area() const override
-                            {
-                                return length*width;
+                        return length * width;
                             }
-              double perimeter() const override
+              double perimeter()  override
                             {
                                 return 2*(length+width);
                             }
@@ -61,18 +60,28 @@ class Rectangle : public Shape{
 };
 class Square : public Rectangle
     {
-        public:
+        private:
         double side_size;
-            Square(double s) {
-                cout<<"Enter the length of the square"<<endl; 
+        public:
+        Square(double s):Rectangle(s,s) {
+                cout<<"Enter the side size of the square"<<endl;
                 cin>>s;
+                if(s<0)
+                    {
+                        cout<<"The square cannot have a negative side size"<<endl;
+                    }
+        else
+            {
                 side_size = s;
+                    
+                     }
+                
             }
-            double area() const override
+                     double area() override
                 {
                     return side_size * side_size;
                 }
-            double perimeter() const override
+            double perimeter() override
                     {
                         return 4 * side_size;
                     }
@@ -88,16 +97,25 @@ class Square : public Rectangle
                         {
                             cout<<"enter the base, height and hypotenuse of the triangle"<<endl;
                             cin>>b>>h>>p;
-                            base = b;
-                            height = h;
-                            hypotenuse = p;
+                            if (b<0 || h<0 || p<0 )
+                                {
+                                    cout<<"Invalid triangle sides"<<endl;
+                                }
+                            else
+                                {
+
+                                    base = b;
+                                    height = h;
+                                    hypotenuse = p;
+                                }
+                           
                         }
                     
-                    double area() const
+                    double area() override
                         {
                             return 0.5*base * height;
                         }
-                    double perimeter() const
+                    double perimeter() override
                         {
                             return base + height + hypotenuse;
                         }
@@ -105,11 +123,42 @@ class Square : public Rectangle
         
 int main()
     {
-         double radius=0, //length = 0, width = 0, side = 0 , base = 0, height = 0, hypotenuse = 0;
+            int raised;
+            double len, wid, side;
+            int height, base, hypotenuse;
+        Shape* shape;
+        shape = new Circle(raised);
+        cout << "Area: " << shape->area() << endl;
+        cout << "Perimeter(circumference): " << shape->perimeter() << endl;
 
-       Shape *shapes;
-       shapes = new Circle(radius);
-       cout<<"The area of the circle is "<<shapes->area()<<endl;
+        cout<<"Enter the length and width of the rectangle"<<endl;
+        cin>>len>>wid;
+            if(len<0 || wid<0)
+            {
+                cout<<"Invalid rectangle sides"<<endl;
+            }
+        else
+        {
+            shape = new Rectangle(len, wid);
+        }
        
-            return 0;
+        cout<<"Area: "<<shape->area()<<endl;
+        cout<<"Perimeter: "<<shape->perimeter()<<endl;
+
+        shape = new Triangle(base, height, hypotenuse);
+        cout<<"Area: "<<shape->area()<<endl;
+        cout<<"Perimeter: "<<shape->perimeter()<<endl;
+
+        Rectangle* r1;
+
+        r1 = new Square(side);
+        cout<<"Area of the square: "<<r1->area()<<endl;
+        cout<<"Perimeter of the square: "<<r1->perimeter()<<endl;
+
+        
+
+
+        return 0;
     }
+           
+    
