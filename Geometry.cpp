@@ -1,5 +1,6 @@
 #include<iostream>
 #include<cmath>
+#include<iomanip>
 
 using namespace std;
 #define PI  3.142
@@ -147,17 +148,17 @@ int main()
 
         r1 = new Square(side);
        
-        cout << "Area: " << shape->area() << endl;   //area for the circle
-        cout << "Perimeter(circumference): " << shape->perimeter() << endl; // perimeter (circumference) for the circle
+        cout << "Area of the circle: " <<setprecision(2)<<shape->area() << endl;   //area for the circle
+        cout << "Perimeter(circumference): " <<setprecision<<shape->perimeter() << endl; // perimeter (circumference) for the circle
 
-        cout << "Area of the rectangle: " << shape->area() << endl;  // area for the rectangle
-        cout << "Perimeter of the rectangle: " << shape->perimeter() << endl; // perimeter for the rectangle
+        cout << "Area of the rectangle: " <<setprecision(2)<<shape->area() << endl;  // area for the rectangle
+        cout << "Perimeter of the rectangle: " <<setprecision(2)<<shape->perimeter() << endl; // perimeter for the rectangle
 
-        cout << "Area of the triangle: " << shape->area() << endl; //area for the triangle
-        cout << "Perimeter of the triangle: " << shape->perimeter() << endl; //perimeter for the triangle
+        cout << "Area of the triangle: " <<setprecision(2)<<shape->area() << endl; //area for the triangle
+        cout << "Perimeter of the triangle: " <<setprecision(2)<<shape->perimeter() << endl; //perimeter for the triangle
 
-        cout << "Area of the square: " << r1->area() << endl; //area of the square
-        cout << "Perimeter of the square: " << r1->perimeter() << endl;  //perimeter of the square
+        cout << "Area of the square: " <<setprecision(2)<< r1->area() << endl; //area of the square
+        cout << "Perimeter of the square: " <<setprecision(2)<<r1->perimeter() << endl;  //perimeter of the square
 
         return 0;
     }
