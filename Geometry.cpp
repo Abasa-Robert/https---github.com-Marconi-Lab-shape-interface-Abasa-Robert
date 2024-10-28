@@ -128,9 +128,6 @@ int main()
             int height, base, hypotenuse;
         Shape* shape;
         shape = new Circle(raised);
-        cout << "Area: " << shape->area() << endl;
-        cout << "Perimeter(circumference): " << shape->perimeter() << endl;
-
         cout<<"Enter the length and width of the rectangle"<<endl;
         cin>>len>>wid;
             if(len<0 || wid<0)
@@ -142,21 +139,25 @@ int main()
             shape = new Rectangle(len, wid);
         }
        
-        cout<<"Area: "<<shape->area()<<endl;
-        cout<<"Perimeter: "<<shape->perimeter()<<endl;
 
         shape = new Triangle(base, height, hypotenuse);
-        cout<<"Area: "<<shape->area()<<endl;
-        cout<<"Perimeter: "<<shape->perimeter()<<endl;
+       
 
         Rectangle* r1;
 
         r1 = new Square(side);
-        cout<<"Area of the square: "<<r1->area()<<endl;
-        cout<<"Perimeter of the square: "<<r1->perimeter()<<endl;
+       
+        cout << "Area: " << shape->area() << endl;   //area for the circle
+        cout << "Perimeter(circumference): " << shape->perimeter() << endl; // perimeter (circumference) for the circle
 
-        
+        cout << "Area of the rectangle: " << shape->area() << endl;  // area for the rectangle
+        cout << "Perimeter of the rectangle: " << shape->perimeter() << endl; // perimeter for the rectangle
 
+        cout << "Area of the triangle: " << shape->area() << endl; //area for the triangle
+        cout << "Perimeter of the triangle: " << shape->perimeter() << endl; //perimeter for the triangle
+
+        cout << "Area of the square: " << r1->area() << endl; //area of the square
+        cout << "Perimeter of the square: " << r1->perimeter() << endl;  //perimeter of the square
 
         return 0;
     }
